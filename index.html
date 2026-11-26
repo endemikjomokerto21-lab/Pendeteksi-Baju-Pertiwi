@@ -155,7 +155,7 @@
         </aside>
       </section>
 
-      <!-- BAGIAN FOTO TIM (1 KETUA + 4 ANGGOTA) DENGAN TOMBOL < DAN > -->
+      <!-- BAGIAN FOTO TIM (1 KETUA + 4 ANGGOTA) 3:4 CENTER + TOMBOL < DAN > -->
       <section class="panel team-panel" aria-label="Kelompok Endemik Team">
         <div class="panel-heading">
           <div>
@@ -166,9 +166,7 @@
         </div>
 
         <div class="team-carousel">
-          <button class="carousel-btn" id="prev-member" type="button" aria-label="Foto sebelumnya">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m15 6-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
+          <button class="carousel-btn" id="prev-member" type="button" aria-label="Foto sebelumnya">&lt;</button>
 
           <div class="team-viewport">
             <div class="team-track" id="team-track">
@@ -176,7 +174,7 @@
               <article class="team-slide">
                 <div class="team-photo-wrap">
                   <img src="./images/ketua.jpg" alt="Foto Ketua Kelompok Endemik" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
-                  <div class="photo-placeholder"><span>FOTO 1 · KETUA</span></div>
+                  <div class="photo-placeholder"><span>FOTO 1 · KETUA<br>./images/ketua.jpg</span></div>
                 </div>
                 <div class="team-info">
                   <span class="team-role">KETUA KELOMPOK</span>
@@ -188,7 +186,7 @@
               <article class="team-slide">
                 <div class="team-photo-wrap">
                   <img src="./images/anggota1.jpg" alt="Foto Anggota 1 Kelompok Endemik" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
-                  <div class="photo-placeholder"><span>FOTO 2 · ANGGOTA 1</span></div>
+                  <div class="photo-placeholder"><span>FOTO 2 · ANGGOTA 1<br>./images/anggota1.jpg</span></div>
                 </div>
                 <div class="team-info">
                   <span class="team-role">ANGGOTA 1</span>
@@ -200,7 +198,7 @@
               <article class="team-slide">
                 <div class="team-photo-wrap">
                   <img src="./images/anggota2.jpg" alt="Foto Anggota 2 Kelompok Endemik" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
-                  <div class="photo-placeholder"><span>FOTO 3 · ANGGOTA 2</span></div>
+                  <div class="photo-placeholder"><span>FOTO 3 · ANGGOTA 2<br>./images/anggota2.jpg</span></div>
                 </div>
                 <div class="team-info">
                   <span class="team-role">ANGGOTA 2</span>
@@ -212,7 +210,7 @@
               <article class="team-slide">
                 <div class="team-photo-wrap">
                   <img src="./images/anggota3.jpg" alt="Foto Anggota 3 Kelompok Endemik" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
-                  <div class="photo-placeholder"><span>FOTO 4 · ANGGOTA 3</span></div>
+                  <div class="photo-placeholder"><span>FOTO 4 · ANGGOTA 3<br>./images/anggota3.jpg</span></div>
                 </div>
                 <div class="team-info">
                   <span class="team-role">ANGGOTA 3</span>
@@ -224,7 +222,7 @@
               <article class="team-slide">
                 <div class="team-photo-wrap">
                   <img src="./images/anggota4.jpg" alt="Foto Anggota 4 Kelompok Endemik" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
-                  <div class="photo-placeholder"><span>FOTO 5 · ANGGOTA 4</span></div>
+                  <div class="photo-placeholder"><span>FOTO 5 · ANGGOTA 4<br>./images/anggota4.jpg</span></div>
                 </div>
                 <div class="team-info">
                   <span class="team-role">ANGGOTA 4</span>
@@ -235,9 +233,7 @@
             </div>
           </div>
 
-          <button class="carousel-btn" id="next-member" type="button" aria-label="Foto berikutnya">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
+          <button class="carousel-btn" id="next-member" type="button" aria-label="Foto berikutnya">&gt;</button>
         </div>
 
         <div class="team-dots" id="team-dots" aria-label="Indikator anggota tim">
@@ -296,7 +292,6 @@
   <noscript>This application requires JavaScript modules to run YOLO26 inference.</noscript>
 
   <script>
-    // --- CAROUSEL 5 ORANG (1 KETUA + 4 ANGGOTA) DENGAN LOOPING > KE 0 ---
     (function initTeamCarousel() {
       const track = document.getElementById("team-track");
       const prevBtn = document.getElementById("prev-member");
@@ -305,7 +300,7 @@
       const dots = Array.from(document.querySelectorAll("#team-dots .team-dot"));
       if (!track || !prevBtn || !nextBtn) return;
 
-      const totalSlides = track.children.length; // 5 (1 ketua + 4 anggota)
+      const totalSlides = track.children.length;
       let currentIndex = 0;
 
       function updateCarousel(index) {
@@ -329,9 +324,7 @@
       updateCarousel(0);
     })();
 
-    // --- SPOTIFY-STYLE MUSIC PLAYER ---
     (function initSpotifyPlayer() {
-      // Ganti 'src' dengan path file lagu di folder proyekmu, misal "./music/lagu1.mp3"
       const TRACKS = [
         {
           title: "Midnight Focus",
