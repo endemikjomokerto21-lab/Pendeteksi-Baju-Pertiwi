@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b1020">
   <meta name="description" content="A responsive, browser-based YOLO26 inference starter template powered by ONNX Runtime Web.">
-  <title>YOLO26 Studio — ENDEMIK PROJECT</title>
+  <title>YOLO26 Studio — Browser Inference</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -82,7 +82,7 @@
                   <svg viewBox="0 0 48 48" fill="none"><rect x="6" y="10" width="36" height="28" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="24" cy="24" r="7" stroke="currentColor" stroke-width="1.8"/><path d="m14 10 3-4h14l3 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
                 </div>
                 <strong>Preview is ready when you are</strong>
-                <span>Load a model, then start your camera or choose an image.</span>
+                <span>Starting camera automatically…</span>
               </div>
               <div class="preview-corner top-left"></div><div class="preview-corner top-right"></div>
               <div class="preview-corner bottom-left"></div><div class="preview-corner bottom-right"></div>
@@ -108,9 +108,9 @@
           </section>
         </div>
 
-       <aside class="side-column">
+        <aside class="side-column">
           <section class="panel control-panel">
-            <!-- Blok 02 / CONFIGURATION - Model setup disembunyikan, namun elemen ID dipertahankan untuk kompatibilitas app.js -->
+            <!-- Model setup disembunyikan, namun elemen ID tetap ada agar app.js tidak error -->
             <div class="model-setup-hidden" hidden aria-hidden="true">
               <div class="panel-heading"><div><p class="eyebrow">02 / CONFIGURATION</p><h2>Model setup</h2></div><span class="step-number">01</span></div>
               <div class="field-group">
@@ -153,6 +153,7 @@
             </div>
           </section>
         </aside>
+      </section>
     </main>
 
     <footer class="footer">
