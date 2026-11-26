@@ -108,27 +108,26 @@
           </section>
         </div>
 
-        <aside class="side-column">
+       <aside class="side-column">
           <section class="panel control-panel">
-            <div class="panel-heading"><div><p class="eyebrow">02 / CONFIGURATION</p><h2>Model setup</h2></div><span class="step-number">01</span></div>
-            <div class="field-group">
-              <label for="model-path">Default model path</label>
-              <div class="path-field"><span class="path-prefix">./</span><input id="model-path" type="text" value="models/yolo26n.onnx" spellcheck="false" autocomplete="off"></div>
-              <p class="field-note">Place your ONNX file in the <code>models/</code> folder, or select a local file below. <a class="inline-link" href="https://huggingface.co/prithivMLmods/YOLO26-ONNX/resolve/main/yolo26n/yolo26n.onnx" target="_blank" rel="noreferrer">Get YOLO26n ONNX ↗</a></p>
+            <!-- Blok 02 / CONFIGURATION - Model setup disembunyikan, namun elemen ID dipertahankan untuk kompatibilitas app.js -->
+            <div class="model-setup-hidden" hidden aria-hidden="true">
+              <div class="panel-heading"><div><p class="eyebrow">02 / CONFIGURATION</p><h2>Model setup</h2></div><span class="step-number">01</span></div>
+              <div class="field-group">
+                <label for="model-path">Default model path</label>
+                <div class="path-field"><span class="path-prefix">./</span><input id="model-path" type="text" value="models/yolo26n.onnx" spellcheck="false" autocomplete="off"></div>
+              </div>
+              <div class="field-group">
+                <label for="model-file">Use a different model</label>
+                <label class="file-drop" for="model-file">
+                  <span><strong id="model-file-label">Choose an ONNX file</strong></span>
+                  <input id="model-file" type="file" accept=".onnx,application/onnx">
+                </label>
+              </div>
+              <button class="button button-primary button-full" id="load-model" type="button">Load model</button>
             </div>
-            <div class="field-group">
-              <label for="model-file">Use a different model <span class="optional-label">OPTIONAL</span></label>
-              <label class="file-drop" for="model-file">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V4m0 0L8 8m4-4 4 4M5 14v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span><strong id="model-file-label">Choose an ONNX file</strong><small>Local file · .onnx</small></span>
-                <input id="model-file" type="file" accept=".onnx,application/onnx">
-              </label>
-            </div>
-            <button class="button button-primary button-full" id="load-model" type="button">
-              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3v14M3 10h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> Load model
-            </button>
-            <div class="divider"></div>
-            <div class="panel-heading compact-heading"><div><p class="eyebrow">03 / INFERENCE SETTINGS</p><h2>Threshold</h2></div><span class="step-number">02</span></div>
+
+            <div class="panel-heading compact-heading"><div><p class="eyebrow">02 / INFERENCE SETTINGS</p><h2>Threshold</h2></div><span class="step-number">01</span></div>
             <div class="field-group threshold-group">
               <div class="range-label"><label for="confidence">Confidence threshold</label><output id="confidence-value" for="confidence">0.25</output></div>
               <input id="confidence" class="range-input" type="range" min="0.05" max="0.95" step="0.05" value="0.25">
@@ -139,7 +138,7 @@
               <select id="camera-facing" class="select-field"><option value="environment">Back camera (mobile)</option><option value="user">Front camera</option></select>
             </div>
             <div class="divider"></div>
-            <div class="panel-heading compact-heading"><div><p class="eyebrow">04 / IMAGE TEST</p><h2>Test an image</h2></div><span class="step-number">03</span></div>
+            <div class="panel-heading compact-heading"><div><p class="eyebrow">03 / IMAGE TEST</p><h2>Test an image</h2></div><span class="step-number">02</span></div>
             <p class="field-note image-note">Run a single image through the currently loaded model and inspect its predictions.</p>
             <input id="image-file" type="file" accept="image/*" hidden>
             <button class="button button-secondary button-full" id="choose-image" type="button" disabled>
@@ -148,13 +147,12 @@
           </section>
 
           <section class="panel detections-panel">
-            <div class="panel-heading"><div><p class="eyebrow">05 / OUTPUT</p><h2>Detections</h2></div><span class="count-badge" id="detection-badge">0</span></div>
+            <div class="panel-heading"><div><p class="eyebrow">04 / OUTPUT</p><h2>Detections</h2></div><span class="count-badge" id="detection-badge">0</span></div>
             <div id="detection-list" class="detection-list" aria-live="polite">
               <div class="list-empty"><span class="list-empty-icon">⌁</span><span>Predictions will appear here.</span></div>
             </div>
           </section>
         </aside>
-      </section>
     </main>
 
     <footer class="footer">
