@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b1020">
+  <meta name="theme-color" content="#091120">
   <meta name="description" content="A responsive, browser-based YOLO26 inference starter template powered by ONNX Runtime Web.">
   <title>YOLO26 Studio — Browser Inference</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b1020'/%3E%3Cpath d='M13 18h38v28H13z' fill='none' stroke='%237ee7c2' stroke-width='4'/%3E%3Cpath d='M22 28h20M22 36h12' stroke='%237ee7c2' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23091120'/%3E%3Cpath d='M13 18h38v28H13z' fill='none' stroke='%2338bdf8' stroke-width='4'/%3E%3Cpath d='M22 28h20M22 36h12' stroke='%2338bdf8' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
   <script type="importmap">
     {
       "imports": {
@@ -27,7 +27,7 @@
         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 32 32" fill="none"><path d="M5 9.5h22v16H5z" stroke="currentColor" stroke-width="2"/><path d="M10 14h12M10 19h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M11 5.5h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </span>
-        <span class="brand-copy"><strong>YOLO26 <span>STUDIO</span></strong><small>MILIK ENDEMIK SPREADSHEET</small></span>
+        <span class="brand-copy"><strong>YOLO26 <span>STUDIO</span></strong><small>IN-BROWSER INFERENCE TEMPLATE</small></span>
       </a>
       <div class="topbar-right">
         <span class="runtime-chip"><span class="pulse-dot"></span> CLIENT-SIDE RUNTIME</span>
@@ -38,14 +38,14 @@
     <main>
       <section class="intro-row">
         <div>
-          <p class="eyebrow">CONTACT US: ENDEMIKSPREADSHEET21@GMAIL.COM</p>
-          <h1>CREATED BY <span>THE ENDEMIK GROUP</span></h1>
-          <p class="intro-copy">Real-time Pertiwi uniform detection powered by YOLO26 directly in your browser by Kelompok Endemik. No server required.</p>
+          <p class="eyebrow">COMPUTER VISION / PLAYGROUND</p>
+          <h1>Build with <span>YOLO26.</span></h1>
+          <p class="intro-copy">Real-time Pertiwi uniform detection built with YOLO26 by Kelompok Endemik directly in your browser. No inference server required.</p>
         </div>
-        <div class="intro-meta"> 
-          <span class="meta-label">ENDEMIK SPREADSHEET</span>
-          <strong>PENDETEKSI BAJU PERTIWI PROJECT</strong>
-          <span class="meta-sub">DAVID / YOGI / SYAHRUL / FASYA / RAFKA</span>
+        <div class="intro-meta">
+          <span class="meta-label">MODEL FAMILY</span>
+          <strong>Ultralytics YOLO26</strong>
+          <span class="meta-sub">ONNX · WebGPU / WASM</span>
         </div>
       </section>
 
@@ -154,13 +154,324 @@
           </section>
         </aside>
       </section>
+
+      <!-- BAGIAN FOTO TIM (1 KETUA + 4 ANGGOTA) DENGAN TOMBOL < DAN > -->
+      <section class="panel team-panel" aria-label="Kelompok Endemik Team">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">05 / KELOMPOK ENDEMIK</p>
+            <h2>Tim Pengembang</h2>
+          </div>
+          <span class="count-badge" id="team-counter">1 / 5</span>
+        </div>
+
+        <div class="team-carousel">
+          <button class="carousel-btn" id="prev-member" type="button" aria-label="Foto sebelumnya">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m15 6-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+
+          <div class="team-viewport">
+            <div class="team-track" id="team-track">
+              <!-- GANTI SRC FOTO & NAMA SESUAI PUNYAMU (TOTAL 5: 1 KETUA + 4 ANGGOTA) -->
+              <article class="team-slide">
+                <div class="team-photo-wrap">
+                  <img src="./images/ketua.jpg" alt="Foto Ketua Kelompok Endemik" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                  <div class="photo-placeholder"><span>FOTO 1 · KETUA</span></div>
+                </div>
+                <div class="team-info">
+                  <span class="team-role">KETUA KELOMPOK</span>
+                  <strong class="team-name">Nama Ketua</strong>
+                  <p class="team-desc">Koordinator tim & pengembangan model deteksi baju Pertiwi.</p>
+                </div>
+              </article>
+
+              <article class="team-slide">
+                <div class="team-photo-wrap">
+                  <img src="./images/anggota1.jpg" alt="Foto Anggota 1 Kelompok Endemik" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                  <div class="photo-placeholder"><span>FOTO 2 · ANGGOTA 1</span></div>
+                </div>
+                <div class="team-info">
+                  <span class="team-role">ANGGOTA 1</span>
+                  <strong class="team-name">Nama Anggota 1</strong>
+                  <p class="team-desc">Dataset & pelabelan seragam Pertiwi.</p>
+                </div>
+              </article>
+
+              <article class="team-slide">
+                <div class="team-photo-wrap">
+                  <img src="./images/anggota2.jpg" alt="Foto Anggota 2 Kelompok Endemik" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                  <div class="photo-placeholder"><span>FOTO 3 · ANGGOTA 2</span></div>
+                </div>
+                <div class="team-info">
+                  <span class="team-role">ANGGOTA 2</span>
+                  <strong class="team-name">Nama Anggota 2</strong>
+                  <p class="team-desc">Training & optimasi model ONNX YOLO26.</p>
+                </div>
+              </article>
+
+              <article class="team-slide">
+                <div class="team-photo-wrap">
+                  <img src="./images/anggota3.jpg" alt="Foto Anggota 3 Kelompok Endemik" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                  <div class="photo-placeholder"><span>FOTO 4 · ANGGOTA 3</span></div>
+                </div>
+                <div class="team-info">
+                  <span class="team-role">ANGGOTA 3</span>
+                  <strong class="team-name">Nama Anggota 3</strong>
+                  <p class="team-desc">Antarmuka web & integrasi kamera real-time.</p>
+                </div>
+              </article>
+
+              <article class="team-slide">
+                <div class="team-photo-wrap">
+                  <img src="./images/anggota4.jpg" alt="Foto Anggota 4 Kelompok Endemik" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                  <div class="photo-placeholder"><span>FOTO 5 · ANGGOTA 4</span></div>
+                </div>
+                <div class="team-info">
+                  <span class="team-role">ANGGOTA 4</span>
+                  <strong class="team-name">Nama Anggota 4</strong>
+                  <p class="team-desc">Pengujian akurasi & dokumentasi proyek.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <button class="carousel-btn" id="next-member" type="button" aria-label="Foto berikutnya">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+
+        <div class="team-dots" id="team-dots" aria-label="Indikator anggota tim">
+          <button type="button" class="team-dot is-active" data-index="0" aria-label="Ketua"></button>
+          <button type="button" class="team-dot" data-index="1" aria-label="Anggota 1"></button>
+          <button type="button" class="team-dot" data-index="2" aria-label="Anggota 2"></button>
+          <button type="button" class="team-dot" data-index="3" aria-label="Anggota 3"></button>
+          <button type="button" class="team-dot" data-index="4" aria-label="Anggota 4"></button>
+        </div>
+      </section>
+
+      <!-- FITUR PEMUTAR MUSIK ALA SPOTIFY DI BAGIAN PALING BAWAH -->
+      <section class="panel spotify-panel" aria-label="Music Player">
+        <div class="spotify-top">
+          <div class="spotify-track-meta">
+            <div class="spotify-cover" id="spotify-cover">
+              <span>♪</span>
+            </div>
+            <div class="spotify-titles">
+              <span class="spotify-badge">NOW PLAYING · ENDEMIK MIX</span>
+              <strong id="track-title">Lofi Study Session</strong>
+              <small id="track-artist">Kelompok Endemik · Studio Vibe</small>
+            </div>
+          </div>
+
+          <div class="spotify-controls">
+            <button class="spotify-icon-btn" id="prev-track" type="button" title="Previous track" aria-label="Previous track">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
+            </button>
+            <button class="spotify-play-btn" id="play-track" type="button" title="Play / Pause" aria-label="Play or pause">
+              <svg id="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg id="pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+            </button>
+            <button class="spotify-icon-btn" id="next-track" type="button" title="Next track" aria-label="Next track">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="spotify-progress-row">
+          <span id="current-time">0:00</span>
+          <input type="range" id="seek-bar" class="spotify-seek" min="0" max="100" value="0" step="0.1" aria-label="Seek track position">
+          <span id="duration-time">0:00</span>
+        </div>
+
+        <div class="spotify-playlist" id="spotify-playlist"></div>
+        <audio id="audio-player" preload="metadata"></audio>
+      </section>
     </main>
 
     <footer class="footer">
-      <span>YOLO26 STUDIO <span class="footer-separator">/</span> OPEN TEMPLATE</span>
+      <span>YOLO26 STUDIO <span class="footer-separator">/</span> KELOMPOK ENDEMIK</span>
       <span>Inference runs locally in your browser. Model and runtime assets are loaded as needed.</span>
     </footer>
   </div>
   <noscript>This application requires JavaScript modules to run YOLO26 inference.</noscript>
+
+  <script>
+    // --- CAROUSEL 5 ORANG (1 KETUA + 4 ANGGOTA) DENGAN LOOPING > KE 0 ---
+    (function initTeamCarousel() {
+      const track = document.getElementById("team-track");
+      const prevBtn = document.getElementById("prev-member");
+      const nextBtn = document.getElementById("next-member");
+      const counter = document.getElementById("team-counter");
+      const dots = Array.from(document.querySelectorAll("#team-dots .team-dot"));
+      if (!track || !prevBtn || !nextBtn) return;
+
+      const totalSlides = track.children.length; // 5 (1 ketua + 4 anggota)
+      let currentIndex = 0;
+
+      function updateCarousel(index) {
+        currentIndex = ((index % totalSlides) + totalSlides) % totalSlides;
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        if (counter) counter.textContent = `${currentIndex + 1} / ${totalSlides}`;
+        dots.forEach((dot, idx) => {
+          dot.classList.toggle("is-active", idx === currentIndex);
+        });
+      }
+
+      prevBtn.addEventListener("click", () => updateCarousel(currentIndex - 1));
+      nextBtn.addEventListener("click", () => updateCarousel(currentIndex + 1));
+      dots.forEach((dot) => {
+        dot.addEventListener("click", () => {
+          const targetIdx = Number(dot.dataset.index);
+          if (!Number.isNaN(targetIdx)) updateCarousel(targetIdx);
+        });
+      });
+
+      updateCarousel(0);
+    })();
+
+    // --- SPOTIFY-STYLE MUSIC PLAYER ---
+    (function initSpotifyPlayer() {
+      // Ganti 'src' dengan path file lagu di folder proyekmu, misal "./music/lagu1.mp3"
+      const TRACKS = [
+        {
+          title: "Midnight Focus",
+          artist: "Kelompok Endemik · Lo-Fi",
+          src: "./music/track1.mp3",
+          coverText: "01"
+        },
+        {
+          title: "Pertiwi Breeze",
+          artist: "Kelompok Endemik · Chill",
+          src: "./music/track2.mp3",
+          coverText: "02"
+        },
+        {
+          title: "Neon Lab Synth",
+          artist: "Kelompok Endemik · Electronic",
+          src: "./music/track3.mp3",
+          coverText: "03"
+        }
+      ];
+
+      const audio = document.getElementById("audio-player");
+      const playBtn = document.getElementById("play-track");
+      const prevBtn = document.getElementById("prev-track");
+      const nextBtn = document.getElementById("next-track");
+      const seekBar = document.getElementById("seek-bar");
+      const currentTimeEl = document.getElementById("current-time");
+      const durationTimeEl = document.getElementById("duration-time");
+      const titleEl = document.getElementById("track-title");
+      const artistEl = document.getElementById("track-artist");
+      const coverEl = document.getElementById("spotify-cover");
+      const playlistEl = document.getElementById("spotify-playlist");
+      const playIcon = document.getElementById("play-icon");
+      const pauseIcon = document.getElementById("pause-icon");
+
+      if (!audio || !playBtn || !TRACKS.length) return;
+
+      let trackIndex = 0;
+      let isSeeking = false;
+
+      function formatTime(sec) {
+        if (!Number.isFinite(sec) || sec < 0) return "0:00";
+        const mins = Math.floor(sec / 60);
+        const rem = Math.floor(sec % 60);
+        return `${mins}:${rem < 10 ? "0" : ""}${rem}`;
+      }
+
+      function renderPlaylist() {
+        if (!playlistEl) return;
+        playlistEl.innerHTML = "";
+        TRACKS.forEach((item, idx) => {
+          const row = document.createElement("button");
+          row.type = "button";
+          row.className = "playlist-item" + (idx === trackIndex ? " is-current" : "");
+          row.innerHTML = `
+            <span class="playlist-idx">${idx + 1}</span>
+            <span class="playlist-meta">
+              <strong>${item.title}</strong>
+              <small>${item.artist}</small>
+            </span>
+            <span class="playlist-tag">${idx === trackIndex && !audio.paused ? "PLAYING" : "TRACK"}</span>
+          `;
+          row.addEventListener("click", () => {
+            loadTrack(idx, true);
+          });
+          playlistEl.appendChild(row);
+        });
+      }
+
+      function syncPlayUi() {
+        const playing = !audio.paused;
+        if (playIcon) playIcon.style.display = playing ? "none" : "block";
+        if (pauseIcon) pauseIcon.style.display = playing ? "block" : "none";
+        if (coverEl) coverEl.classList.toggle("is-playing", playing);
+        renderPlaylist();
+      }
+
+      function loadTrack(idx, autoPlay = false) {
+        trackIndex = ((idx % TRACKS.length) + TRACKS.length) % TRACKS.length;
+        const t = TRACKS[trackIndex];
+        audio.src = t.src;
+        if (titleEl) titleEl.textContent = t.title;
+        if (artistEl) artistEl.textContent = t.artist;
+        if (coverEl) coverEl.innerHTML = `<span>${t.coverText}</span>`;
+        if (seekBar) seekBar.value = 0;
+        if (currentTimeEl) currentTimeEl.textContent = "0:00";
+        renderPlaylist();
+
+        if (autoPlay) {
+          audio.play().catch(() => {
+            syncPlayUi();
+          });
+        } else {
+          syncPlayUi();
+        }
+      }
+
+      playBtn.addEventListener("click", () => {
+        if (!audio.src) loadTrack(trackIndex, false);
+        if (audio.paused) {
+          audio.play().catch(() => syncPlayUi());
+        } else {
+          audio.pause();
+        }
+      });
+
+      prevBtn?.addEventListener("click", () => loadTrack(trackIndex - 1, !audio.paused));
+      nextBtn?.addEventListener("click", () => loadTrack(trackIndex + 1, !audio.paused));
+
+      audio.addEventListener("play", syncPlayUi);
+      audio.addEventListener("pause", syncPlayUi);
+      audio.addEventListener("ended", () => loadTrack(trackIndex + 1, true));
+
+      audio.addEventListener("loadedmetadata", () => {
+        if (durationTimeEl) durationTimeEl.textContent = formatTime(audio.duration);
+        if (seekBar && Number.isFinite(audio.duration)) {
+          seekBar.max = String(audio.duration);
+        }
+      });
+
+      audio.addEventListener("timeupdate", () => {
+        if (isSeeking) return;
+        if (currentTimeEl) currentTimeEl.textContent = formatTime(audio.currentTime);
+        if (seekBar && Number.isFinite(audio.duration)) {
+          seekBar.value = String(audio.currentTime);
+        }
+      });
+
+      seekBar?.addEventListener("input", () => {
+        isSeeking = true;
+        if (currentTimeEl) currentTimeEl.textContent = formatTime(Number(seekBar.value));
+      });
+
+      seekBar?.addEventListener("change", () => {
+        audio.currentTime = Number(seekBar.value);
+        isSeeking = false;
+      });
+
+      loadTrack(0, false);
+    })();
+  </script>
 </body>
 </html>
