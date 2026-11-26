@@ -7,7 +7,7 @@ import { YOLO, annotate } from "@ultralytics/yolo";
  * project site (including repositories served below /<repository-name>/).
  */
 const CONFIG = Object.freeze({
-  defaultModelPath: "models/yolo26n.onnx",
+  defaultModelPath: "models/best (2).onnx",
   defaultConfidence: 0.25,
   annotation: {
     lineWidth: 3,
@@ -191,19 +191,27 @@ function currentPredictionOptions() {
   return { conf: Number(elements.confidence.value) };
 }
 
+function resolveModelUrl(rawPath) {
+  const cleanPath = rawPath.replace(/^\.\//, "");
+  const encodedPath = encodeURI(cleanPath);
+  return new URL(encodedPath, import.meta.url).href;
+}
+
 async function loadModel() {
   if (state.isLoading) return;
 
   state.isLoading = true;
-  elements.loadModel.disabled = true;
-  elements.loadModel.textContent = "Loading model…";
-  setStatus("Loading model and initializing browser runtime…", "loading");
+  if (elements.loadModel) {
+    elements.loadModel.disabled = true;
+    elements.loadModel.textContent = "Loading model…";
+  }
+  setStatus("Loading best (2).onnx and initializing browser runtime…", "loading");
   elements.modelState.textContent = "LOADING MODEL";
 
   try {
-    const selectedFile = elements.modelFile.files?.[0];
-    const typedPath = elements.modelPath.value.trim() || CONFIG.defaultModelPath;
-    const modelSource = selectedFile || new URL(typedPath.replace(/^\.\//, ""), import.meta.url).href;
+    const selectedFile = elements.modelFile?.files?.[0];
+    const typedPath = elements.modelPath?.value.trim() || CONFIG.defaultModelPath;
+    const modelSource = selectedFile || resolveModelUrl(typedPath);
 
     const loadedModel = await YOLO.load(modelSource, { device: "auto" });
     state.model = loadedModel;
@@ -213,17 +221,21 @@ async function loadModel() {
     elements.deviceState.textContent = `DEVICE ${String(actualDevice).toUpperCase()}`;
     elements.startCamera.disabled = false;
     elements.chooseImage.disabled = false;
-    elements.loadModel.innerHTML = "<svg viewBox=\"0 0 20 20\" fill=\"none\" aria-hidden=\"true\"><path d=\"m4 10 4 4 8-8\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg> Reload model";
+    if (elements.loadModel) {
+      elements.loadModel.innerHTML = "<svg viewBox=\"0 0 20 20\" fill=\"none\" aria-hidden=\"true\"><path d=\"m4 10 4 4 8-8\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg> Reload model";
+    }
     setStatus("Model ready. Starting camera…", "ready");
-    elements.previewHint.textContent = "Model loaded.";
+    elements.previewHint.textContent = "Model best (2).onnx loaded.";
   } catch (error) {
     console.error("YOLO26 model load failed:", error);
     elements.modelState.textContent = "MODEL ERROR";
-    setStatus(error?.message ? `Model load failed: ${error.message}` : "Model load failed. Check the model file and try again.", "error");
+    setStatus(error?.message ? `Model load failed: ${error.message}` : "Model load failed. Check best (2).onnx in models/ folder.", "error");
   } finally {
     state.isLoading = false;
-    elements.loadModel.disabled = false;
-    if (elements.loadModel.textContent === "Loading model…") elements.loadModel.textContent = "Load model";
+    if (elements.loadModel) {
+      elements.loadModel.disabled = false;
+      if (elements.loadModel.textContent === "Loading model…") elements.loadModel.textContent = "Load model";
+    }
   }
 }
 
@@ -402,6 +414,9 @@ elements.cameraFacing?.addEventListener("change", () => {
 });
 
 // Initialize confidence readout and empty state
+if (elements.modelPath) {
+  elements.modelPath.value = CONFIG.defaultModelPath;
+}
 if (elements.confidence && elements.confidenceValue) {
   const initialConf = CONFIG.defaultConfidence.toFixed(2);
   elements.confidence.value = String(CONFIG.defaultConfidence);
@@ -410,7 +425,7 @@ if (elements.confidence && elements.confidenceValue) {
 }
 clearDetections();
 
-// Auto-load model and start camera on page open
+// Auto-load model and immediately start camera on page open
 async function autoInitialize() {
   await loadModel();
   if (state.model) {
