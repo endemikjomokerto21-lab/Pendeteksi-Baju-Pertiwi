@@ -233,3 +233,111 @@ h1 span { color: var(--accent); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* --- Visual polish tambahan (tanpa mengubah/menghapus aturan di atas) --- */
+@keyframes panelReveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.panel,
+.metric-card,
+.status-strip {
+  animation: panelReveal .42s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+.panel:hover {
+  border-color: rgba(161, 181, 210, .22);
+  transition: border-color .25s ease, box-shadow .25s ease;
+}
+
+.metric-card {
+  transition: transform .2s ease, border-color .2s ease, background .2s ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(126, 231, 194, .28);
+  background: rgba(19, 30, 52, .92);
+}
+
+.metric-card strong {
+  font-variant-numeric: tabular-nums;
+}
+
+.preview-stage:has(#webcam.is-visible) {
+  border-color: rgba(126, 231, 194, .34);
+  box-shadow: 0 0 0 1px rgba(126, 231, 194, .1), 0 14px 36px rgba(0, 0, 0, .38);
+}
+
+.preview-stage:has(#webcam.is-visible) .preview-corner {
+  opacity: .9;
+  width: 19px;
+  height: 19px;
+  transition: width .25s ease, height .25s ease, opacity .25s ease;
+}
+
+.brand-mark {
+  transition: transform .2s ease, border-color .2s ease, background .2s ease;
+}
+
+.brand:hover .brand-mark {
+  transform: translateY(-1px);
+  border-color: rgba(126, 231, 194, .45);
+  background: rgba(126, 231, 194, .13);
+}
+
+.detection-item {
+  transition: background .18s ease, padding-left .18s ease;
+  border-radius: 8px;
+}
+
+.detection-item:hover {
+  background: rgba(126, 231, 194, .04);
+  padding-left: 6px;
+}
+
+.detection-score {
+  font-variant-numeric: tabular-nums;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: rgba(126, 231, 194, .09);
+  border: 1px solid rgba(126, 231, 194, .18);
+}
+
+.detection-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.detection-list::-webkit-scrollbar-track {
+  background: rgba(5, 10, 21, .25);
+  border-radius: 999px;
+}
+
+.detection-list::-webkit-scrollbar-thumb {
+  background: rgba(161, 181, 210, .2);
+  border-radius: 999px;
+}
+
+.detection-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(126, 231, 194, .45);
+}
+
+.select-field {
+  transition: border-color .2s ease, background .2s ease;
+}
+
+.select-field:hover {
+  border-color: rgba(161, 181, 210, .38);
+}
+
+.select-field:focus {
+  outline: none;
+  border-color: rgba(126, 231, 194, .55);
+}
