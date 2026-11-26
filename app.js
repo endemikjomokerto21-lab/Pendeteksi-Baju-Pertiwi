@@ -205,7 +205,6 @@ async function loadModel() {
     const typedPath = elements.modelPath.value.trim() || CONFIG.defaultModelPath;
     const modelSource = selectedFile || new URL(typedPath.replace(/^\.\//, ""), import.meta.url).href;
 
-    // Automatic device selection prefers WebGPU when available and falls back to CPU/WASM.
     const loadedModel = await YOLO.load(modelSource, { device: "auto" });
     state.model = loadedModel;
 
@@ -215,8 +214,8 @@ async function loadModel() {
     elements.startCamera.disabled = false;
     elements.chooseImage.disabled = false;
     elements.loadModel.innerHTML = "<svg viewBox=\"0 0 20 20\" fill=\"none\" aria-hidden=\"true\"><path d=\"m4 10 4 4 8-8\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg> Reload model";
-    setStatus("Model ready. Start a camera session or test an image.", "ready");
-    elements.previewHint.textContent = "Model loaded. Choose a camera or an image to begin.";
+    setStatus("Model ready. Starting camera…", "ready");
+    elements.previewHint.textContent = "Model loaded.";
   } catch (error) {
     console.error("YOLO26 model load failed:", error);
     elements.modelState.textContent = "MODEL ERROR";
@@ -371,35 +370,52 @@ async function analyzeImage(file) {
 }
 
 // UI events
-
-elements.loadModel.addEventListener("click", loadModel);
-elements.startCamera.addEventListener("click", startCamera);
-elements.stopCamera.addEventListener("click", () => {
+elements.loadModel?.addEventListener("click", loadModel);
+elements.startCamera?.addEventListener("click", startCamera);
+elements.stopCamera?.addEventListener("click", () => {
   stopCamera();
   setStatus("Camera stopped. Model remains loaded.", "ready");
   elements.previewHint.textContent = "Camera is off. Your model is ready for another input.";
 });
-elements.clearPreview.addEventListener("click", clearPreview);
-elements.chooseImage.addEventListener("click", () => elements.imageFile.click());
-elements.imageFile.addEventListener("change", (event) => {
+elements.clearPreview?.addEventListener("click", clearPreview);
+elements.chooseImage?.addEventListener("click", () => elements.imageFile?.click());
+elements.imageFile?.addEventListener("change", (event) => {
   const file = event.target.files?.[0];
   if (file) analyzeImage(file);
   event.target.value = "";
 });
-elements.modelFile.addEventListener("change", (event) => {
+elements.modelFile?.addEventListener("change", (event) => {
   const file = event.target.files?.[0];
-  elements.modelFileLabel.textContent = file ? file.name : "Choose an ONNX file";
+  if (elements.modelFileLabel) {
+    elements.modelFileLabel.textContent = file ? file.name : "Choose an ONNX file";
+  }
 });
-elements.confidence.addEventListener("input", () => {
-  elements.confidenceValue.value = Number(elements.confidence.value).toFixed(2);
-  elements.confidenceValue.textContent = Number(elements.confidence.value).toFixed(2);
+elements.confidence?.addEventListener("input", () => {
+  const formatted = Number(elements.confidence.value).toFixed(2);
+  if (elements.confidenceValue) {
+    elements.confidenceValue.value = formatted;
+    elements.confidenceValue.textContent = formatted;
+  }
 });
-elements.cameraFacing.addEventListener("change", () => {
+elements.cameraFacing?.addEventListener("change", () => {
   if (state.running) startCamera();
 });
 
-// Initialize the confidence readout and neutral empty state.
-elements.confidence.value = String(CONFIG.defaultConfidence);
-elements.confidenceValue.value = CONFIG.defaultConfidence.toFixed(2);
-elements.confidenceValue.textContent = CONFIG.defaultConfidence.toFixed(2);
+// Initialize confidence readout and empty state
+if (elements.confidence && elements.confidenceValue) {
+  const initialConf = CONFIG.defaultConfidence.toFixed(2);
+  elements.confidence.value = String(CONFIG.defaultConfidence);
+  elements.confidenceValue.value = initialConf;
+  elements.confidenceValue.textContent = initialConf;
+}
 clearDetections();
+
+// Auto-load model and start camera on page open
+async function autoInitialize() {
+  await loadModel();
+  if (state.model) {
+    await startCamera();
+  }
+}
+
+autoInitialize();
